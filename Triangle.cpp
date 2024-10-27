@@ -25,11 +25,20 @@ Triangle::Triangle(double x1_coord, double x2_coord, double x3_coord, double y1_
     set_y1_coord(y1_coord);
     set_y2_coord(y2_coord);
     set_y3_coord(y3_coord);
+    side_A = 0;
+    side_B = 0;
+    side_C = 0;
 }
 
 ///
 Triangle::Triangle(double side_A, double side_B, double side_C)
 {
+    x1_coord = 0;
+    x2_coord = 0;
+    x3_coord = 0;
+    y1_coord = 0;
+    y2_coord = 0;
+    y3_coord = 0;
     set_sideA(side_A);
     set_sideB(side_B);
     set_sideC(side_C);
@@ -93,9 +102,9 @@ void Triangle::set_sideB(double side)
 void Triangle::set_sideC(double side)
 {
     if (side >= 0)
-        side_B = side;
+        side_C = side;
     else
-        side_B = 0;   
+        side_C = 0;   
 }
 
 ///

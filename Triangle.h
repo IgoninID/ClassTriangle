@@ -35,11 +35,21 @@ class Triangle
 
         void set_y3_coord(double y);
 
+        void set_first_vert(double x, double y);
+
+        void set_second_vert(double x, double y);
+
+        void set_third_vert(double x, double y);
+
+        void set_all_vert(double x1, double y1, double x2, double y2, double x3, double y3);
+
         void set_sideA(double side);
 
         void set_sideB(double side);
 
         void set_sideC(double side);
+
+        void set_sides(double fside, double sside, double tside);
 
         double get_x1_coord() const;
 

@@ -19,12 +19,7 @@ Triangle::Triangle()
 ///
 Triangle::Triangle(double x1_coord, double x2_coord, double x3_coord, double y1_coord, double y2_coord, double y3_coord)
 {
-    set_x1_coord(x1_coord);
-    set_x2_coord(x2_coord);
-    set_x3_coord(x3_coord);
-    set_y1_coord(y1_coord);
-    set_y2_coord(y2_coord);
-    set_y3_coord(y3_coord);
+    set_all_vert(x1_coord, y1_coord, x2_coord, y2_coord, x3_coord, y3_coord);
     side_A = 0;
     side_B = 0;
     side_C = 0;
@@ -39,9 +34,7 @@ Triangle::Triangle(double side_A, double side_B, double side_C)
     y1_coord = 0;
     y2_coord = 0;
     y3_coord = 0;
-    set_sideA(side_A);
-    set_sideB(side_B);
-    set_sideC(side_C);
+    set_sides(side_A, side_B, side_C);
 }
 
 ///
@@ -81,6 +74,44 @@ void Triangle::set_y3_coord(double y)
 }
 
 ///
+void Triangle::set_first_vert(double x, double y)
+{
+    set_x1_coord(x);
+    set_y1_coord(y);
+}
+
+///
+void Triangle::set_second_vert(double x, double y)
+{
+    set_x2_coord(x);
+    set_y2_coord(y);   
+}
+
+///
+void Triangle::set_third_vert(double x, double y)
+{
+    set_x3_coord(x);
+    set_y3_coord(y);    
+}
+
+///
+void Triangle::set_all_vert(double x1, double y1, double x2, double y2, double x3, double y3)
+{
+    if (((x1==y1)&&(x1==x2)&&(x2==y2))||((x1==y1)&&(x1==x3)&&(x3==y3))||((x2==y2)&&(x2==x3)&&(x3==y3)))
+    {
+        set_first_vert(0, 0);
+        set_second_vert(0, 0);
+        set_third_vert(0, 0);
+    }
+    else
+    {
+        set_first_vert(x1, y1);
+        set_second_vert(x2, y2);
+        set_third_vert(x3, y3);        
+    }    
+}
+
+///
 void Triangle::set_sideA(double side)
 {
     if (side >= 0)
@@ -105,6 +136,23 @@ void Triangle::set_sideC(double side)
         side_C = side;
     else
         side_C = 0;   
+}
+
+///  
+void Triangle::set_sides(double fside, double sside, double tside)
+{
+    if ((fside+sside<=tside)||(sside+tside<=fside)||(fside+tside<=sside))
+    {
+        set_sideA(0);
+        set_sideB(0);
+        set_sideC(0);
+    }
+    else
+    {
+        set_sideA(fside);
+        set_sideB(sside);
+        set_sideC(tside);
+    }
 }
 
 ///
